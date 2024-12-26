@@ -11,7 +11,7 @@ export async function GET() {
 export async function POST() {
   try {
     const data = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL!.toString(),
+      from: "support@votonic.com",
       to: "ezzeldin.ui@gmail.com",
       subject: "Welcome to Votonic",
       react: Welcome(),
@@ -19,7 +19,7 @@ export async function POST() {
 
     return NextResponse.json(data);
   } catch (error) {
-    console.error('Email error:', error); // Add logging
+    console.error("Email error:", error);
     return NextResponse.json({ error }, { status: 500 });
   }
 }
