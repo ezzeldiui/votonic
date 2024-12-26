@@ -5,6 +5,7 @@ import { useId } from "@hooks/useId";
 import { currentPollIdAtom } from "@atoms/pollId";
 import { useSetAtom } from "jotai";
 import { useRouter } from "next/navigation";
+import { SendEmailButton } from "@components/buttons";
 
 export default function DashboardPage() {
   const { generateId } = useId();
@@ -23,29 +24,7 @@ export default function DashboardPage() {
         Create a poll
       </Button>
 
-      <Button
-        onClick={async () => {
-          try {
-            const response = await fetch("/api/emails", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            });
-
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log("Response:", data);
-          } catch (error) {
-            console.error("Error:", error);
-          }
-        }}
-      >
-        Test Email
-      </Button>
+      <SendEmailButton />
 
       <h1 className="mb-6">Your Polls:</h1>
 

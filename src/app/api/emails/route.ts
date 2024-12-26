@@ -8,13 +8,16 @@ export async function GET() {
   return NextResponse.json({ message: "Hello from the API!" });
 }
 
-export async function POST() {
+export async function POST(request: Request) {
+
+  const { email, firstName } = await request.json();
+
   try {
     const data = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL!.toString(),
-      to: "ezzeldin.ui@gmail.com",
+      to: { ...email },
       subject: "Welcome to Votonic",
-      react: Welcome(),
+      react: Welcome({ firstName }),
     });
 
     return NextResponse.json(data);

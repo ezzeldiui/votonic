@@ -1,21 +1,17 @@
 import {
-  Body,
-  Container,
-  Head,
-  Hr,
-  Img,
-  Link,
-  Preview,
-  Section,
-  Text,
-  Button,
-  Html,
-  Font,
+    Body,
+    Button,
+    Container,
+    Font,
+    Head,
+    Html
 } from "@react-email/components";
-import * as React from "react";
-import { Logo } from "@components/common";
 
-export default function Welcome() {
+type WelcomeProps = {
+    firstName: string;
+}
+
+export default function Welcome({ firstName }: WelcomeProps) {
   return (
     <Html>
       <Head />
@@ -31,6 +27,7 @@ export default function Welcome() {
           fontStyle="normal"
         />
         <Container>
+            <h1>Welcome {firstName}!</h1>
           <Button
             href="https://www.votonic.com/"
             style={{ background: "#000", padding: "10px 20px", color: "#fff", borderRadius: "5px" }}
