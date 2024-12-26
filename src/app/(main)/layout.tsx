@@ -5,6 +5,7 @@ import { Navbar } from "@components/layout";
 import { BackgroundGradient } from "@components/shared";
 import "@styles/globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { JotaiProvider } from "@providers/jotai-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -22,9 +23,13 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={cn(inter.className)}>
-          <BackgroundGradient />
-          <Navbar />
-          <section className="">{children}</section>
+          <JotaiProvider>
+            <BackgroundGradient />
+            <Navbar />
+            <section className="h-screen w-full flex flex-col items-center justify-center">
+              {children}
+            </section>
+          </JotaiProvider>
         </body>
       </html>
     </ClerkProvider>
