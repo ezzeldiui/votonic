@@ -15,7 +15,7 @@ export function SendEmailButton() {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify({
-                email: user.user?.primaryEmailAddress?.emailAddress[0],
+                email: user.user?.primaryEmailAddress?.emailAddress,
                 firstName: user.user?.firstName,
               })
             });
